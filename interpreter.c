@@ -1,4 +1,6 @@
 #include "monty.h"
+
+void opcode_cmd_selector(char **raw_buffer, unsigned int current_line);
 /**
  * main - program entry
  * @argc: argument count
@@ -12,21 +14,13 @@ int status;
 
 int main(int argc, char **argv)
 {
-	int i, status;
-
 	size_t buffer_size, current_line;
 
 	ssize_t total_read;
 
 	FILE *fdin;
 
-	char *monty_file, *buffer, *delimiter, *token;
-
-	instruction_t opcode_cmd[] = {
-		{"push", push},
-		{"pall", pall},
-		{NULL, NULL}
-	};
+	char *monty_file, *buffer;
 
 	if (argc != 2)
 	{
@@ -43,34 +37,11 @@ int main(int argc, char **argv)
 	current_line = 1;
 	buffer_size = 0;
 	buffer = NULL;
-	delimiter = " $";
-	token = NULL;
-	status = 1;
 	while ((total_read = getline(&buffer, &buffer_size, fdin)) != -1)
 	{
-		token = strtok(buffer, delimiter);
-		i = 0;
-		while (opcode_cmd[i].opcode != NULL)
-		{
-			if ((strcmp(opcode_cmd[i].opcode, token)) == 0)
-			{
-				status = 0;
-				opcode_arg = strtok(NULL, delimiter);
-			       	opcode_cmd[i].f(&top_stack, current_line);
-				break;
-			}
-			i++;
-		}	
-		if (status != 0)
-		{
-			printf("L%ld: unknown instruction %s\n", current_line, token);
-			free(buffer);
-			exit(EXIT_FAILURE);
-		}
+		opcode_cmd_selector(&buffer, current_line);
 		current_line++;
 	}
-	free(buffer);
 	fclose(fdin);
 	return (EXIT_SUCCESS);
 }
-

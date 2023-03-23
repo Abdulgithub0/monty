@@ -25,7 +25,6 @@ void push(stack_t **stack, unsigned int line_number)
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	status = 0;
 	if (*stack == NULL)
 	{
 		push_data->n = converted_op_arg;
