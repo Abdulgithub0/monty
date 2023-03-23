@@ -42,6 +42,7 @@ int main(int argc, char **argv)
 		opcode_cmd_selector(&buffer, current_line);
 		current_line++;
 	}
+	free(buffer);
 	fclose(fdin);
 	return (EXIT_SUCCESS);
 }
