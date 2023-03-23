@@ -34,7 +34,10 @@ void opcode_cmd_selector(char **raw_buffer, unsigned int current_line)
 		}
 		i++;
 	}
-	printf("L%d: unknown instruction %s\n", current_line, opcode_cmd);
-	exit(EXIT_FAILURE);
+	if (opcode_arg != NULL)
+	{
+		printf("L%d: unknown instruction %s\n", current_line, opcode_cmd);
+		exit(EXIT_FAILURE);
+	}
 }
 
