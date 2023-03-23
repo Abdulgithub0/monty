@@ -44,19 +44,21 @@ int main(int argc, char **argv)
 	current_line = 1;
 	buffer_size = 0;
 	buffer = NULL;
-	delimiter = " \n";
+	delimiter = " $";
 	token = NULL;
 	status = 1;
 	while ((total_read = getline(&buffer, &buffer_size, fdin)) != -1)
 	{
 		token = strtok(buffer, delimiter);
 		i = 0;
+		//printf("%s\n", token);
 		while (opcode_cmd[i].opcode != NULL)
 		{
 			if ((strcmp(opcode_cmd[i].opcode, token)) == 0)
 			{
 				status = 0;
 				opcode_arg = strtok(NULL, delimiter);
+				//printf("%s\n", opcode_arg);
 			       	opcode_cmd[i].f(&top_stack, current_line);
 				break;
 			}
