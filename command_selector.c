@@ -9,7 +9,7 @@
  * Return: void
  */
 
-void opcode_cmd_selector(char **raw_buffer, unsigned int current_line)
+void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 {
 	char *opcode_cmd, *delimiter;
 
@@ -22,7 +22,7 @@ void opcode_cmd_selector(char **raw_buffer, unsigned int current_line)
 	};
 
 	delimiter = " $";
-	opcode_cmd = strtok(*raw_buffer, delimiter);
+	opcode_cmd = strtok(raw_buffer, delimiter);
 	opcode_arg = strtok(NULL, delimiter);
 	i = 0;
 	while (listof_op_cmd[i].opcode != NULL)
@@ -36,7 +36,9 @@ void opcode_cmd_selector(char **raw_buffer, unsigned int current_line)
 	}
 	if (opcode_arg != NULL)
 	{
-		printf("L%d: unknown instruction %s\n", current_line, opcode_cmd);
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
+				current_line, opcode_cmd);
+		free(raw_buffer);
 		exit(EXIT_FAILURE);
 	}
 }

@@ -3,6 +3,7 @@
 #define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
 
 /**
@@ -42,7 +43,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 
 /*interpreter helper/optimizer functions*/
-void opcode_cmd_selector(char **raw_buffer, unsigned int current_line);
+void opcode_cmd_selector(char *raw_buffer, unsigned int current_line);
 
 /* external variables*/
 extern stack_t *top_stack;

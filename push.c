@@ -16,13 +16,13 @@ void push(stack_t **stack, unsigned int line_number)
 	converted_op_arg = atoi(opcode_arg);
 	if ((strcmp(opcode_arg, "0") != 0) && (converted_op_arg == 0))
 	{
-		printf("L%d: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	push_data = malloc(sizeof(stack_t));
 	if (!push_data)
 	{
-		printf("Error: malloc failed\n");
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	if (*stack == NULL)

@@ -1,6 +1,5 @@
 #include "monty.h"
 
-void opcode_cmd_selector(char **raw_buffer, unsigned int current_line);
 /**
  * main - program entry
  * @argc: argument count
@@ -24,14 +23,14 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	monty_file = argv[1];
 	fdin = fopen(monty_file, "r");
 	if (fdin == NULL)
 	{
-		printf("Error: Can't open file %s\n", monty_file);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", monty_file);
 		exit(EXIT_FAILURE);
 	}
 	current_line = 1;
@@ -39,7 +38,7 @@ int main(int argc, char **argv)
 	buffer = NULL;
 	while ((total_read = getline(&buffer, &buffer_size, fdin)) != -1)
 	{
-		opcode_cmd_selector(&buffer, current_line);
+		opcode_cmd_selector(buffer, current_line);
 		current_line++;
 	}
 	free(buffer);
