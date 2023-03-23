@@ -41,6 +41,7 @@ typedef struct instruction_s
 /* monty program function operations prototypes */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 
 /*interpreter helper/optimizer functions*/
 void opcode_cmd_selector(char *raw_buffer, unsigned int current_line);

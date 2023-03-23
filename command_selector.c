@@ -18,10 +18,11 @@ void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 	instruction_t listof_op_cmd[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
-	delimiter = " $";
+	delimiter = " $ \n \0";
 	opcode_cmd = strtok(raw_buffer, delimiter);
 	opcode_arg = strtok(NULL, delimiter);
 	i = 0;
