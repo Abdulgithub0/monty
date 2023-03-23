@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * main - program entry
  * @argc: argument count
@@ -51,14 +50,12 @@ int main(int argc, char **argv)
 	{
 		token = strtok(buffer, delimiter);
 		i = 0;
-		//printf("%s\n", token);
 		while (opcode_cmd[i].opcode != NULL)
 		{
 			if ((strcmp(opcode_cmd[i].opcode, token)) == 0)
 			{
 				status = 0;
 				opcode_arg = strtok(NULL, delimiter);
-				//printf("%s\n", opcode_arg);
 			       	opcode_cmd[i].f(&top_stack, current_line);
 				break;
 			}
