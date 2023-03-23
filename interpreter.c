@@ -65,11 +65,12 @@ int main(int argc, char **argv)
 		if (status != 0)
 		{
 			printf("L%ld: unknown instruction %s\n", current_line, token);
+			free(buffer);
 			exit(EXIT_FAILURE);
 		}
+		current_line++;
 	}
-	if (buffer)
-		free(buffer);
+	free(buffer);
 	fclose(fdin);
 	return (EXIT_SUCCESS);
 }
