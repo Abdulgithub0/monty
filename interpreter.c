@@ -8,7 +8,7 @@
  */
 
 stack_t *top_stack;
-char *opcode_arg;
+
 int status;
 
 int main(int argc, char **argv)
@@ -43,5 +43,6 @@ int main(int argc, char **argv)
 	}
 	free(buffer);
 	fclose(fdin);
+	free_dlist();
 	return (EXIT_SUCCESS);
 }

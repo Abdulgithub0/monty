@@ -13,16 +13,27 @@ void push(stack_t **stack, unsigned int line_number)
 
 	int converted_op_arg;
 
-	converted_op_arg = atoi(opcode_arg);
-	if ((strcmp(opcode_arg, "0") != 0) && (converted_op_arg == 0))
+	if (opcode_arg)
+	{
+		converted_op_arg = atoi(opcode_arg);
+		if (((strcmp(opcode_arg, "0") != 0) && (converted_op_arg == 0)))
+		{
+			dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+			free_dlist();
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+		free_dlist();
 		exit(EXIT_FAILURE);
 	}
 	push_data = malloc(sizeof(stack_t));
 	if (!push_data)
 	{
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free_dlist();
 		exit(EXIT_FAILURE);
 	}
 	if (*stack == NULL)
@@ -41,4 +52,3 @@ void push(stack_t **stack, unsigned int line_number)
 		*stack = push_data;
 	}
 }
-
