@@ -23,6 +23,9 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+
+
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -38,14 +41,22 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+
+
 /* monty program function operations prototypes */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+
+
 
 /*interpreter helper/optimizer functions*/
 void opcode_cmd_selector(char *raw_buffer, unsigned int current_line);
 void free_dlist(void);
+
+
 
 /* external variables*/
 extern stack_t *top_stack;
