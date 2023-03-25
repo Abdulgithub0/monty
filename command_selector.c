@@ -25,11 +25,13 @@ void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 		{"div", _div}, {"mul", mul},
 		{"mod", mod}, {NULL, NULL}
 	};
-	delimiter = "\n $#";
+	delimiter = "\n $";
 	opcode_cmd = strtok(raw_buffer, delimiter);
 	opcode_arg = strtok(NULL, delimiter);
 	i = 0;
 	if (opcode_cmd)
+		if(opcode_cmd[0] == '#')
+			return;
 	while (listof_op_cmd[i].opcode != NULL)
 	{
 		if ((strcmp(listof_op_cmd[i].opcode, opcode_cmd)) == 0)
