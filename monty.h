@@ -55,6 +55,10 @@ void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
+
+
 
 /*interpreter helper/optimizer functions*/
 void opcode_cmd_selector(char *raw_buffer, unsigned int current_line);
