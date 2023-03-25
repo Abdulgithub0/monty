@@ -20,7 +20,8 @@ void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 	instruction_t listof_op_cmd[] = {
 		{"push", push}, {"pall", pall},
 		{"pint", pint},	{"pop", pop},
-		{"swap", swap}, {NULL, NULL}
+		{"swap", swap}, {"add", add},
+		{NULL, NULL}
 	};
 	delimiter = "\n $";
 	opcode_cmd = strtok(raw_buffer, delimiter);
