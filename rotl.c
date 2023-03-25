@@ -18,9 +18,9 @@ void rotl(stack_t **stack, unsigned int line_number)
 	{
 		traveler = *stack;
 		new_top = traveler->prev;
-		new_top->next = NULL;
 		if (!new_top)
 			return;
+		new_top->next = NULL;
 		while (traveler)
 		{
 			last_stack = traveler;
