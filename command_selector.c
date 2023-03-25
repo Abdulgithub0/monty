@@ -22,7 +22,7 @@ void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 		{"pint", pint},	{"pop", pop},
 		{"swap", swap}, {"add", add},
 		{"nop", nop}, {"sub", sub},
-		{NULL, NULL}
+		{"div", _div}, {NULL, NULL}
 	};
 	delimiter = "\n $";
 	opcode_cmd = strtok(raw_buffer, delimiter);
