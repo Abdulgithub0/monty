@@ -33,6 +33,5 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	dprintf(STDERR_FILENO, "L%d: can't mod, stack too short\n", line_number);
-	free_dlist();
 	exit(EXIT_FAILURE);
 }

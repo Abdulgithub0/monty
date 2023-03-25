@@ -24,7 +24,7 @@ void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 		{"nop", nop}, {"sub", sub},
 		{"div", _div}, {"mul", mul},
 		{"mod", mod}, {"pchar", pchar},
-		{NULL, NULL}
+		{"pstr", pstr}, {NULL, NULL}
 	};
 	delimiter = "\n $";
 	opcode_cmd = strtok(raw_buffer, delimiter);
