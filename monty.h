@@ -51,6 +51,10 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+
+
+
 
 /*interpreter helper/optimizer functions*/
 void opcode_cmd_selector(char *raw_buffer, unsigned int current_line);

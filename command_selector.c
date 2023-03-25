@@ -21,7 +21,7 @@ void opcode_cmd_selector(char *raw_buffer, unsigned int current_line)
 		{"push", push}, {"pall", pall},
 		{"pint", pint},	{"pop", pop},
 		{"swap", swap}, {"add", add},
-		{NULL, NULL}
+		{"nop", nop}, {NULL, NULL}
 	};
 	delimiter = "\n $";
 	opcode_cmd = strtok(raw_buffer, delimiter);
