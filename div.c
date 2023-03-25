@@ -28,11 +28,11 @@ void _div(stack_t **stack, unsigned int line_number)
 			*stack = new_top;
 			return;
 		}
-		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", line_number);
 		free_dlist();
 		exit(EXIT_FAILURE);
 	}
-	dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", line_number);
+	dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", line_number);
 	free_dlist();
 	exit(EXIT_FAILURE);
 }
